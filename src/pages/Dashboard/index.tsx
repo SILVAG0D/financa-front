@@ -1,10 +1,12 @@
+import React, { useState } from "react";
 import Router from "next/router";
-
 import { Button } from "../../components/atoms/Button";
 import { TemplateContainer } from "../../components/templates";
 import { Card } from "./components/Card";
 
 export const Dashboard = () => {
+  const [counter, setCounter] = useState(0); 
+
   const array = [
     { id: "0", title: "Netflix", category: "streamming", cost: 39.99 },
     { id: "1", title: "Amazon", category: "streamming", cost: 9.99 },
@@ -14,6 +16,10 @@ export const Dashboard = () => {
 
   const handleNavigateToAddNewExpanse = () => {
     Router.push("/dashboard/add");
+  };
+
+  const handleIncrementCounter = () => {
+    setCounter(counter + 1); 
   };
 
   return (
@@ -30,6 +36,11 @@ export const Dashboard = () => {
       </header>
 
       <main className="w-full bg-purple-50 max-w-screen-lg h-5/6 grid overflow-y-scroll content-start grid-cols-3 gap-4 p-4">
+        {/* <div>
+          <Button onClick={handleIncrementCounter}>
+            Contador: {counter}
+          </Button>
+        </div> */}
         {array?.map((item) => (
           <Card
             key={item.id}

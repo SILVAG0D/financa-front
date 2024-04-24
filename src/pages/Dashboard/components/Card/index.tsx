@@ -1,7 +1,14 @@
 import tw from "tailwind-styled-components";
 import { Button } from "../../../../components/atoms/Button";
+import React, { useState } from "react";
 
 export const Card = ({ title, category, cost }) => {
+
+  const [counter, setCounter] = useState(0);
+  const handleIncrementCounter = () => {
+    setCounter(counter + 1); 
+  };
+
   return (
     <CardContainer>
       <h2 className="font-bold text-xl">{title}</h2>
@@ -13,6 +20,11 @@ export const Card = ({ title, category, cost }) => {
         <Button variant="ghost">Editar</Button>
         <Button variant="ghost">Excluir</Button>
       </footer>
+      <div>
+          <Button onClick={handleIncrementCounter}>
+            Contador: {counter}
+          </Button>
+        </div>
     </CardContainer>
   );
 };
